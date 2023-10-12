@@ -1,0 +1,42 @@
+---
+title: "read_data_from_web"
+author: "Sitian Zhou"
+date: "2023-10-12"
+output: github_document
+---
+
+
+
+```{r}
+library(rvest)
+library(httr)
+library(tidyverse)
+```
+
+
+```{r}
+nsduh_url = "https://samhda.s3-us-gov-west-1.amazonaws.com/s3fs-public/field-uploads/2k15StateFiles/NSDUHsaeShortTermCHG2015.htm"
+
+nsduh_html = 
+  read_html(nsduh_url)
+```
+
+```{r}
+marj_use_df = 
+  nsduh_html |> 
+  html_table() |> 
+  first() |> 
+  slice(-1)
+```
+
+
+
+
+
+
+
+
+
+
+
+
